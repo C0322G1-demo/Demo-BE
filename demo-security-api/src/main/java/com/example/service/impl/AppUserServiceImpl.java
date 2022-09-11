@@ -38,8 +38,9 @@ public class AppUserServiceImpl implements IAppUserService {
     @Override
     public String existsByUserName(String username) throws MessagingException, UnsupportedEncodingException {
         String user = appUserRepository.existsByUserName(username);
+        AppUser appUser = appUserRepository.findAppUserByName(username);
         if (user != null) {
-            sendVerificationEmailForResetPassWord(username, "sangnguyenjp97@gmail.com");
+            sendVerificationEmailForResetPassWord(username, appUser.getEmail());
         }
         return user;
     }

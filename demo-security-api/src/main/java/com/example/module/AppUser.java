@@ -14,16 +14,19 @@ public class AppUser {
 
     private String passWord;
 
+    private String email;
+
     @OneToMany(mappedBy = "appUser")
     private List<UserRole> userRoles;
 
     public AppUser() {
     }
 
-    public AppUser(int id, String name, String passWord, List<UserRole> userRoles) {
+    public AppUser(int id, String name, String passWord, String email, List<UserRole> userRoles) {
         this.id = id;
         this.name = name;
         this.passWord = passWord;
+        this.email = email;
         this.userRoles = userRoles;
     }
 
@@ -57,5 +60,13 @@ public class AppUser {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
